@@ -1,0 +1,7 @@
+﻿@model string
+
+@using (Html.BeginForm("Search", "Recipe", FormMethod.Get))
+{
+    <input type="text" name="searchQuery" value="@Model" />
+    <input type="submit" value="Search" />
+}

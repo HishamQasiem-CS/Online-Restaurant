@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Product>
+
+@{
+    Layout = null;
+}
+<style>
+    table {
+        text-align: center;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
+<h1>Display Products</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>@Html.DisplayNameFor(x=>x.ProductId)</th>
+        <th>@Html.DisplayNameFor(x=>x.ProductName)</th>
+        <th>@Html.DisplayNameFor(x=>x.Price)</th>
+        <th>@Html.DisplayNameFor(x=>x.Description)</th>
+        <th>@Html.DisplayNameFor(x=>x.Image)</th>
+        <th>@Html.DisplayNameFor(x=>x.Qty)</th>
+        <th>@Html.DisplayNameFor(x=>x.isStock)</th>
+
+
+        <th>Operations</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.Price</td>
+            <td>@item.Description</td>
+            <td>@item.Image</td>
+            <td>@item.Qty</td>
+            
+            <td>@item.isStock</td>
+            <td>
+                <a asp-action="UpdateProduect" asp-controller="Dashboard" asp-route-id="@item.ProductId" class="btn btn-primary">Update</a>
+
+                <a asp-action="DeleteProduct" asp-controller="Dashboard" asp-route-id="@item.ProductId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+
+    }
+    <tr>
+        <td>
+            <a asp-action="Index" asp-controller="Dashboard" class="btn btn-success">Back to Dashboard</a>
+
+        </td>
+    </tr>
+
+</table>

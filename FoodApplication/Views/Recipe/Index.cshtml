@@ -1,0 +1,71 @@
+﻿@model List<Categorey>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic' rel='stylesheet' type='text/css'>
+
+<!-- Search form -->
+<div class="row">
+    <div class="col-md-6">
+        <form class="d-flex" asp-action="Index" asp-controller="Recipe">
+            <input  name="search" class="form-control" type="search" aria-label="Search"/>
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+
+    </div>
+</div>
+<style>
+        img{
+            width:200px;
+            height:250px;
+        border-radius: 10px;
+        
+        }
+        h2{
+            font-weight:bold;
+             
+             font-size:40px;
+        }
+        p{
+            margin-top:20px;
+            margin-left:50px;
+        }
+        span{
+        margin-top: 20px;
+        margin-left: 50px;
+        }
+        
+    </style>
+
+    @foreach(var categoru in Model){
+    <h2>@categoru.CategoreyName</h2>
+        <div >
+            
+            @foreach (var product in categoru.Products)
+            {
+                
+                    <table>
+                        <tr>
+                            <td >
+                        <div class="card disabled" style="background-color:pink ; border-radius:10px; margin-top:30px;">
+                            <img src="@Url.Content(product.Image)" alt="imag" class="card-img-top h-75" />
+                            <div class="card-body">
+
+
+                                <p class="card-title">Name product: @product.ProductName</p>
+                                <span class="card-text">Desciption: @product.Description</span><br />
+                                <span class="card-text">Price is: @product.Price JD</span><br />
+                                <span class="card-text"> Quality: @product.Qty</span>
+                                <br />
+                                <a asp-action="Details" asp-controller="Recipe" asp-route-id="@product.ProductId" class="btn btn-primary">Order</a>
+                            </div>
+                        </div>
+
+                        <br />
+                            </td>
+                        </tr>
+                    </table>
+                   
+                    }
+                    
+                </div>
+            
+        
+    }

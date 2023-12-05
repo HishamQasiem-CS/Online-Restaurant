@@ -1,0 +1,13 @@
+﻿@model Book_Table
+
+@{
+    Layout = null;
+}
+
+<form asp-action="AgreeOrNotBook" asp-controller="Dashboard" method="post">
+  <div>
+      <label asp-for="IsDone"></label>
+        <input asp-for="IsDone" class="form-check" />
+  </div>
+  <input type="submit" value="Ok" class="btn btn-primary" />
+</form>
